@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Productos";
+}
+
+@model List<Productos>
+@using Tp5Tienda.Models;
+
+
+<h2 text-aling:center>Listado de Productos</h2>
+
+<nav>
+    <ul>
+        <li>
+            <a asp-controller="Producto" asp-action="CrearProducto">Crear Producto</a>
+        </li>
+    </ul>
+</nav>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th hidden>ID</th>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Modificar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var Producto in Model)
+        {
+            <tr>
+                <td hidden>@Producto.IdProducto</td>
+                <td>@Producto.Descripcion</td>
+                <td>
+                    <a asp-controller="Producto" asp-action="ActualizarProducto" asp-route-idProducto="@Producto.IdProducto">Editar</a>
+
+                </td>
+                <td>
+                    <a asp-controller="Producto" asp-action="Eliminar" asp-route-idProducto="@Producto.IdProducto"
+                       onclick="return confirm('¿Estas seguro que quieres eliminar el elemento?')">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
