@@ -33,7 +33,7 @@ namespace TiendaMvc.Controllers
         public IActionResult CrearProducto()
         {
           
-            return View(new PostProducto());
+            return View(new CrearProductoViewModel());
         }
 
         [HttpPost]
@@ -50,12 +50,20 @@ namespace TiendaMvc.Controllers
         }
 
         [HttpGet]
-        public IActionResult ActProducto(int idProd)
+        public IActionResult ActualizarProducto(int idProd)
         {
             var usu = _productoRepo.MostrarProductoPorId(idProd);
             return View(new ActualizarProductoVM(usu));
         }
 
-     
+        [HttpPost]
+        public IActionResult ActProducto(ActualizarProductoVM prodModificar)
+        {
+            
+            if (!ModelState.IsValid) return RedirectToAction("ActualizarProducto");
+            var prod = Productos.MapActualizarProductoVm(prodModificar);
+            _productoRepo.ModificarProductos(prod.IdProducto, prod);
+            return RedirectToAction("Index");
+        }
     }
 }

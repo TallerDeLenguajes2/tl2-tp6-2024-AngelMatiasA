@@ -93,7 +93,7 @@ namespace Tp5Tienda.Repositorio
 
             return nuevoProducto;
         }
-         public PostProducto ModificarProductos(int idProducto, PostProducto nuevoProducto)
+         public Productos ModificarProductos(int idProducto, Productos nuevoProducto)
         {
             int rowAffected = 0;
             if (nuevoProducto == null)
