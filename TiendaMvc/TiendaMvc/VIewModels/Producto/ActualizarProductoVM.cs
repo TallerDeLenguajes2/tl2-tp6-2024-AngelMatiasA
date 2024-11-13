@@ -6,7 +6,7 @@ namespace TiendaMvc.VIewModels.Producto
     public class ActualizarProductoVM
     {
        
-        public int? IdProducto { get; set; }
+        public int IdProducto { get; set; }
 
         [Required(ErrorMessage = "Este campo es requerido")]
         [Display(Name = "Nombre del Producto")]

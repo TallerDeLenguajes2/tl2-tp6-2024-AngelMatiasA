@@ -56,6 +56,6 @@ namespace TiendaMvc.Controllers
             return View(new ActualizarProductoVM(usu));
         }
 
-        
+     
     }
 }
