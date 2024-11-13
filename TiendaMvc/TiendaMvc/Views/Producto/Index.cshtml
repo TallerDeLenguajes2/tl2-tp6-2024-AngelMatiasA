@@ -21,7 +21,7 @@
         <tr>
             <th hidden>ID</th>
             <th>Nombre</th>
-            <th>Rol</th>
+            <th>Precio</th>
             <th>Modificar</th>
             <th>Eliminar</th>
         </tr>
@@ -32,13 +32,14 @@
             <tr>
                 <td hidden>@Producto.IdProducto</td>
                 <td>@Producto.Descripcion</td>
+                <td>@Producto.Precio</td>
                 <td>
                     <a asp-controller="Producto" asp-action="ActualizarProducto" asp-route-idProducto="@Producto.IdProducto">Editar</a>
 
                 </td>
                 <td>
                     <a asp-controller="Producto" asp-action="Eliminar" asp-route-idProducto="@Producto.IdProducto"
-                       onclick="return confirm('¿Estas seguro que quieres eliminar el elemento?')">Eliminar</a>
+                       onclick=" return confirm('¿Estas seguro que quieres eliminar el elemento?')">Eliminar</a>
                 </td>
             </tr>
         }

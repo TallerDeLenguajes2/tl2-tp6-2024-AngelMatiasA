@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TiendaMvc.VIewModels.Producto;
 using Tp5Tienda.Models;
 using Tp5Tienda.Repositorio;
 
@@ -36,7 +37,7 @@ namespace TiendaMvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult CrearProducto(PostProducto nuevoProd)
+        public IActionResult AltaProducto(CrearProductoViewModel nuevoProd)
         {
             var producto = _productoRepo.CrearProductos(nuevoProd);
             if (producto == null)
@@ -47,5 +48,14 @@ namespace TiendaMvc.Controllers
             
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult ActProducto(int idProd)
+        {
+            var usu = _productoRepo.MostrarProductoPorId(idProd);
+            return View(new ActualizarProductoVM(usu));
+        }
+
+        
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Tp5Tienda.Models.PostProducto
+﻿@model Tp5Tienda.ViewModels.Cre
 
 @{
     ViewData["Title"] = "Crear producto";
@@ -6,7 +6,7 @@
 
 <h1 class="text-center">@ViewData["Title"]</h1>
 
-<form asp-controller="Producto" asp-action="CrearProducto" method="post">
+<form asp-controller="Producto" asp-action="AltaProducto" method="post">
     <div class="form-group">
         <label asp-for="@Model.Descripcion"></label>
         <input asp-for="@Model.Descripcion" class="form-control" />

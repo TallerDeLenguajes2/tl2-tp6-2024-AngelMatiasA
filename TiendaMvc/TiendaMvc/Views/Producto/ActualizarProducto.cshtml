@@ -1,0 +1,29 @@
+﻿@model ActualizarProductoVM
+@using TiendaMvc.VIewModels.Producto
+@{
+    ViewData["title"] = "Actualizar usuario";
+}
+
+<h1 class="text-center">Actualizar usuario</h1>
+<section>
+    <article>
+        @if (String.IsNullOrEmpty(Model.Descripcion))
+        {
+            <p><strong>ERROR 404</strong></p>
+        }
+        else
+        {
+            <form asp-controller="Usuario" asp-action="ActualizarUsuario" method="post" class="form-view">
+                <label class="form-label">Descripcion</label>
+                <input asp-for="@Model.Descripcion" value="@Model.Descripcion" class="form-control">
+                <input hidden asp-for="@Model.IdProducto">
+                <div class="form-group">
+                    <label asp-for="@Model.Precio"></label>
+                    <input asp-for="@Model.Precio" class="form-control" />
+                </div>
+               
+                <input type="submit" class="btn btn-outline-success">
+            </form>
+        }
+    </article>
+</section>

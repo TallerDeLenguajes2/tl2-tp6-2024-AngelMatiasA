@@ -1,4 +1,5 @@
 ﻿using System.Data.SQLite;
+using TiendaMvc.VIewModels.Producto;
 using Tp5Tienda.Models;
 
 namespace Tp5Tienda.Repositorio
@@ -37,8 +38,36 @@ namespace Tp5Tienda.Repositorio
 
             return productos;
         }
-        
-        public PostProducto CrearProductos( PostProducto nuevoProducto)
+
+        public Productos MostrarProductoPorId(int idProd)
+        {
+            Productos producto = new Productos();
+            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            {
+                connection.Open();
+
+                string queryString = @"SELECT * FROM Productos WHERE IdProducto = @idProd;";
+                var command = new SQLiteCommand(queryString, connection);
+                command.Parameters.Add(new SQLiteParameter("@idProd", idProd));
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        
+                        producto.IdProducto = Convert.ToInt32(reader["IdProducto"]);
+                        producto.Descripcion = reader["Descripcion"].ToString();
+                        producto.Precio = Convert.ToInt32(reader["Precio"]);
+                       
+                    }
+                }
+                connection.Close();
+            }
+
+            
+
+            return producto;
+        }
+        public CrearProductoViewModel CrearProductos( CrearProductoViewModel nuevoProducto)
         {
             int rowAffected = 0;
             if (nuevoProducto == null)
