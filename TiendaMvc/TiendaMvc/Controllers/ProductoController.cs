@@ -65,5 +65,11 @@ namespace TiendaMvc.Controllers
             _productoRepo.ModificarProductos(prod.IdProducto, prod);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Eliminar(int idProducto)
+        {
+            _productoRepo.EliminarProducto(idProducto);
+            return RedirectToAction("Index");
+        }
     }
 }
